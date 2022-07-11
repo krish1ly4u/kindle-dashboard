@@ -198,7 +198,7 @@
             //description.innerHTML = data.weather[0].description;
             lastUpdate.innerHTML = momentWithCorrectUtcOffset(new Date()).format(timeFormat); //+ "/" + momentWithCorrectUtcOffset(new Date(data.dt * 1000)).format(timeFormat);
             var currentDate = new Date();
-            date.innerHTML = momentWithCorrectUtcOffset(new Date()).format("dd, ll");
+            date.innerHTML = days[currentDate.getDay()]+"<br>"+currentDate.getDate()+"<br>"+monthNames[currentDate.getMonth()];
             
             var sunrise = momentWithCorrectUtcOffset(new Date(data.sys.sunrise * 1000));
             var sunset = momentWithCorrectUtcOffset(new Date(data.sys.sunset * 1000));
