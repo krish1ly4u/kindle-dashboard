@@ -118,11 +118,8 @@ html.night {
 }
 
 #date {
-    position: absolute;
-    top: 0;
-    right: 3.3%;
     font-size: 30px;
-    font-size: 15rem;
+    font-size: 10rem;
 }
 
 #sun {
