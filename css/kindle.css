@@ -223,14 +223,14 @@ html.night {
  float:left;
  font-size:15rem; 
  margin-left: 3.3%;
- margin-top: 2%;	
+ margin-top: 3%;	
 }
 #desc1{
     position: absolute;
     bottom: 5%;
     left: 3.3%;
-   font-size:5rem;
+   font-size:4.5rem;
 }
 #temp1{
-  font-size:15rem;
+  font-size:12rem;
 }
