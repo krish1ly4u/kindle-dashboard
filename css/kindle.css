@@ -174,7 +174,7 @@ html.night {
 
 .landscape #lastUpdate {
     font-size: 7.1px;
-    font-size: 50rem;
+    font-size: 40rem;
 }
 
 .landscape #description {
@@ -224,7 +224,7 @@ html.night {
 }
 #icon1{
  float:left;
- font-size:20rem; 
+ font-size:15rem; 
  margin-left: 3.3%;
  margin-top: 2%;	
 }
@@ -232,8 +232,8 @@ html.night {
     position: absolute;
     bottom: 5%;
     left: 3.3%;
-   font-size:8rem;
+   font-size:5rem;
 }
 #temp1{
-  font-size:20rem;
+  font-size:15rem;
 }
