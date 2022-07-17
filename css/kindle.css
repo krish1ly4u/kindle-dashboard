@@ -172,6 +172,8 @@ html.night {
 .landscape #lastUpdate {
     font-size: 7.1px;
     font-size: 40rem;
+	position: initial;
+    text-align: center;
 }
 
 .landscape #description {
@@ -185,7 +187,8 @@ html.night {
 }
 .landscape #date {
     font-size: 21.8px;
-    font-size: 4.3rem;
+    font-size: 5rem;
+	text-align: center;
 }
 
 .landscape #sun {
