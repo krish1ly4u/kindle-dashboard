@@ -82,7 +82,7 @@
         function refreshData() {
 		    var timeNow = momentWithCorrectUtcOffset(new Date());
 		    var minutes = 30;//timeNow.minutes(); 
-			lastUpdate.innerHTML = timeNow.format('LT');//timeNow.toLocaleString([], { hour: '2-digit', minute: '2-digit', hour12: true }).replace("am","").replace("pm","");
+			lastUpdate.innerHTML = timeNow.format('hh:mm');//timeNow.toLocaleString([], { hour: '2-digit', minute: '2-digit', hour12: true }).replace("am","").replace("pm","");
 			date.innerHTML = timeNow.format("dddd , MMM Do"); 
 			if(minutes == 0 || minutes == 30){
 				refreshActualWeather();
