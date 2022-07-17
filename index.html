@@ -96,7 +96,7 @@
 
         function processForecastWeather(data) {
             for (var i = 1; i < forecastCount; i++) {
-                var forecast = data.list[i];
+                var forecast = data.list[i-1];
 
                 forecastsCells[i].temp.innerHTML = Math.round(forecast.main.temp) + unitsSymbolHtml;
                 forecastsCells[i].icon.className = getIconClassName(forecast.weather[0], new Date(forecast.dt * 1000));
