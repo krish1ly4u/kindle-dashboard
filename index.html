@@ -80,12 +80,19 @@
         }
 
         function refreshData() {
-            refreshActualWeather();
-            refreshForecastWeather();
-            setNightMode();
-
-            window.setTimeout("refreshData()", refreshTime);
+		    var timeNow = momentWithCorrectUtcOffset(new Date());
+		    var minutes = 30;//timeNow.minutes(); 
+			lastUpdate.innerHTML = timeNow.format('LT');//timeNow.toLocaleString([], { hour: '2-digit', minute: '2-digit', hour12: true }).replace("am","").replace("pm","");
+			date.innerHTML = timeNow.format("dddd , MMM Do"); 
+			if(minutes == 0 || minutes == 30){
+				refreshActualWeather();
+				refreshForecastWeather();
+			}
+			
+			
+           window.setTimeout("refreshData()", refreshTime);
         }
+		
 
         function processForecastWeather(data) {
             for (var i = 1; i < forecastCount; i++) {
@@ -190,27 +197,7 @@
             document.getElementById("temp1").innerHTML = Math.round(data.main.temp) + unitsSymbolHtml;
             document.getElementById("icon1").className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
             document.getElementById("desc1").innerHTML = data.weather[0].description;
-            //forecastsCells[1].time.innerHTML = momentWithCorrectUtcOffset(new Date(forecast.dt * 1000)).format(timeFormat);
 
-            //icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
-            //temp.innerHTML = Math.round(data.main.temp);
-            //city.innerHTML = data.name;
-            //description.innerHTML = data.weather[0].description;
-            lastUpdate.innerHTML = momentWithCorrectUtcOffset(new Date()).format(timeFormat); //+ "/" + momentWithCorrectUtcOffset(new Date(data.dt * 1000)).format(timeFormat);
-            var currentDate = new Date();
-            date.innerHTML = days[currentDate.getDay()]+"<br>"+currentDate.getDate()+"<br>"+monthNames[currentDate.getMonth()];
-            
-            var sunrise = momentWithCorrectUtcOffset(new Date(data.sys.sunrise * 1000));
-            var sunset = momentWithCorrectUtcOffset(new Date(data.sys.sunset * 1000));
-            
-            _sunriseHour = sunrise.hour();
-            _sunsetHour = sunset.hour();
-
-            setNightMode();
-
-            sun.innerHTML = "<i class='wi " + getMoonIcon(getCurrentMoonPhase()) + "'></i>&nbsp;&nbsp;<i class='wi wi-sunrise'></i> " + sunrise.format(timeFormat)
-                    + "&nbsp;&nbsp;<i class='wi wi-sunset'></i> " + sunset.format(timeFormat);
-            //  alert(data.name);
         }
 
         /**
@@ -313,7 +300,7 @@
         var _apiParams = null;
 
         if (!refreshTime) {
-            refreshTime = 30 * 60 * 1000;
+            refreshTime = 1 * 60 * 1000;
         }
 
         function rotate() {
@@ -541,6 +528,7 @@
     </div>
     <div id="description"></div>
     <div id="lastUpdate"></div>
+	<div id="date"></div>
     <div class="forecast">
         <div class="col  col1">
             <div id="time1" class="colTime"></div>
@@ -573,7 +561,7 @@
             <div id="desc5" class="colDesc"></div>-->
         </div>
     </div>
-    <div id="date"></div>
+   
     <!--<div id="sun"></div>-->
 </div>
 <div id="cleaner"></div>
