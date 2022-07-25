@@ -82,7 +82,7 @@
         function refreshData() {
 		    var timeNow = momentWithCorrectUtcOffset(new Date());
 		    var minutes = timeNow.minutes();
-			lastUpdate.innerHTML = timeNow.format('hh:mm');
+			lastUpdate.innerHTML = timeNow.format('HH:mm');
 			date.innerHTML = timeNow.format("dddd , MMM Do"); 
 			if(minutes == 0 || minutes == 30){
 				refreshActualWeather();
