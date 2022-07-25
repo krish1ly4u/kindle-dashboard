@@ -108,7 +108,7 @@
         function getIconClassName(weather, date) {
             var isNight = weather.icon.slice(-1) === "n";
             if (isNight && weather.id == 800) {
-                // Night clear -> real moon phase icon.
+                // Night clear -> real moon phase icon. dfg
                 var phase = getMoonPhaseFromDate(date);
                 var icon = getMoonIcon(phase);
                 return "wi " + icon;
