@@ -59,7 +59,7 @@ html.night {
 }
 
 #lastUpdate {
-	font-family: 'Digital Dismay';
+	font-family: 'Saira Stencil One';
     font-size: 10px;
     font-size: 1.4rem;
     position: absolute;
@@ -172,7 +172,7 @@ html.night {
 
 .landscape #lastUpdate {
     font-size: 7.1px;
-    font-size: 40rem;
+    font-size: 35rem;
 	position: initial;
     text-align: center;
 }
@@ -240,6 +240,6 @@ html.night {
 }
 
 @font-face {
-  font-family: 'Digital Dismay';
-  src: url('../font/Digital Dismay.otf');
+  font-family: 'edundot';
+  src: url('../font/edundot.ttf');
 }
