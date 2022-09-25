@@ -1,13 +1,7 @@
 # kindle-dashboard
 # kindle-weather-dashboard
 
-Simple webpage with weahter informations.
-
-# Try it!
-
-Go to: http://kindle.hrincar.eu/weather/ and that's it!
-
-or you can install it at own server and customize.
+Simple webpage with weahter information
 
 ## Features
 
