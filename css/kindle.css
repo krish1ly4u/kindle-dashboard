@@ -172,8 +172,8 @@ html.night {
 
 .landscape #lastUpdate {
     font-size: 7.1px;
-	font-weight: bold;
-    font-size: 30rem;
+	font-weight: bold !important;
+    font-size: 32rem;
 	position: static;
     text-align: center;
 	min-height: 40rem;
@@ -189,9 +189,9 @@ html.night {
     font-size: 35rem;
 }
 .landscape #date {
-	font-family : 'Russo One';
+	font-family : 'Audiowide';
     font-size: 21.8px;
-    font-size: 8rem;
+    font-size: 10rem;
 	text-align: center;
 }
 
