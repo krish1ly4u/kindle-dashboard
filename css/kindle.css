@@ -172,8 +172,9 @@ html.night {
 
 .landscape #lastUpdate {
     font-size: 7.1px;
+	font-weight: bold;
     font-size: 30rem;
-	position: initial;
+	position: static;
     text-align: center;
 }
 
