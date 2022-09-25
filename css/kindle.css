@@ -59,9 +59,9 @@ html.night {
 }
 
 #lastUpdate {
-	font-family: 'Monoton';
+	font-family: 'Digital Dismay';
     font-size: 10px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     position: absolute;
     bottom: 47%;
     left: 3.3%;
@@ -172,7 +172,7 @@ html.night {
 
 .landscape #lastUpdate {
     font-size: 7.1px;
-    font-size: 35rem;
+    font-size: 40rem;
 	position: initial;
     text-align: center;
 }
@@ -237,4 +237,9 @@ html.night {
 }
 #temp1{
   font-size:12rem;
+}
+
+@font-face {
+  font-family: 'Digital Dismay';
+  src: url('../font/Digital Dismay.otf');
 }
