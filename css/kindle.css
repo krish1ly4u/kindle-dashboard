@@ -176,6 +176,7 @@ html.night {
     font-size: 30rem;
 	position: static;
     text-align: center;
+	min-height: 40rem;
 }
 
 .landscape #description {
@@ -188,6 +189,7 @@ html.night {
     font-size: 35rem;
 }
 .landscape #date {
+	font-family : 'Russo One';
     font-size: 21.8px;
     font-size: 8rem;
 	text-align: center;
