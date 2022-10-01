@@ -59,7 +59,7 @@ html.night {
 }
 
 #lastUpdate {
-	font-family: 'Revalia';
+	font-family: 'Digital Dismay';
     font-size: 10px;
     font-size: 1.4rem;
     position: absolute;
@@ -172,8 +172,7 @@ html.night {
 
 .landscape #lastUpdate {
     font-size: 7.1px;
-	font-weight: bold !important;
-    font-size: 32rem;
+    font-size: 36rem;
 	position: static;
     text-align: center;
 	min-height: 40rem;
@@ -243,6 +242,6 @@ html.night {
 }
 
 @font-face {
-  font-family: 'edundot';
-  src: url('../font/edundot.ttf');
+  font-family: 'Digital Dismay';
+  src: url('../font/Digital Dismay.otf');
 }
