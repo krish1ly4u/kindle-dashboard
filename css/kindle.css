@@ -175,7 +175,7 @@ html.night {
     font-size: 42rem;
 	position: static;
     text-align: center;
-	min-height: 40rem;
+	min-height: 20rem;
 }
 
 .landscape #description {
