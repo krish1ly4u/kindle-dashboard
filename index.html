@@ -195,11 +195,11 @@
         };
 
         function processActualWeather(data) {
-            icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
+            //icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
 			var currentDate = new Date();
-            temp.innerHTML = ''//Math.round(data.main.temp) + unitsSymbolHtml;//currentDate.getDate();
-            city.innerHTML = ''//Math.round(data.main.temp) + unitsSymbolHtml;//'Bengaluru'; //monthNames[currentDate.getMonth()];
-            description.innerHTML = Math.round(data.main.temp) + unitsSymbolHtml;//data.weather[0].description;//weekday[currentDate.getDay()];
+            //temp.innerHTML = ''//Math.round(data.main.temp) + unitsSymbolHtml;//currentDate.getDate();
+            //city.innerHTML = ''//Math.round(data.main.temp) + unitsSymbolHtml;//'Bengaluru'; //monthNames[currentDate.getMonth()];
+            //description.innerHTML = Math.round(data.main.temp) + unitsSymbolHtml;//data.weather[0].description;//weekday[currentDate.getDay()];
             lastUpdate.innerHTML = momentWithCorrectUtcOffset(new Date()).format(timeFormat);
             //date.innerHTML = momentWithCorrectUtcOffset(new Date()).format("dd, ll");
             
@@ -217,6 +217,8 @@
             //forecastsCells[0].icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
             //forecastsCells[0].desc.innerHTML = data.weather[0].description;
             forecastsCells[0].time.innerHTML = weekday[currentDate.getDay()];
+			forecastsCells[3].icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
+			forecastsCells[3].temp.innerHTML = Math.round(data.main.temp) + unitsSymbolHtml;
 			forecastsCells[4].desc.innerHTML = "<i class='wi wi-sunrise'></i> "+ sunrise.format(timeFormat)+"<br><i class='wi wi-sunset'></i>"+sunset.format(timeFormat)+"<br><i class='wi " + getMoonIcon(getCurrentMoonPhase())+"' style='font-size:15rem;'>";
 			
            // sun.innerHTML = "<i class='wi " + getMoonIcon(getCurrentMoonPhase()) + "'></i>&nbsp;&nbsp;<i class='wi wi-sunrise'></i> " + sunrise.format(timeFormat)
@@ -548,18 +550,18 @@
     <div id="description"></div>
     <div id="lastUpdate"></div>
     <div class="forecast">
-        <div class="col col1" style="width:39%">
+        <div class="col col1" style="width:50%">
             <div id="time1" class="colTime"></div>
             <!--<div class="forecastIconWrapper"><i id="icon1" class="colIcon"></i></div>-->
             <div id="temp1" class="colTemp"></div>
             <!--<div id="desc1" class="colDesc"></div>-->
         </div>
-        <div class="col col2">
+        <!--<div class="col col2">
             <div id="time2" class="colTime"></div>
             <div class="forecastIconWrapper"><i id="icon2" class="colIcon"></i></div>
             <div id="temp2" class="colTemp"></div>
             <div id="desc2" class="colDesc"></div>
-        </div>
+        </div>-->
         <!--<div class="col col3">
             <div id="time3" class="colTime"></div>
             <div class="forecastIconWrapper"><i id="icon3" class="colIcon"></i></div>
