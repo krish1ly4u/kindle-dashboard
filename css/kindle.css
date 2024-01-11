@@ -61,9 +61,8 @@ html.night {
 #lastUpdate {
     font-size: 10px;
     font-size: 1.4rem;
-    position: absolute;
-    bottom: 45%;
-    left: 3.3%;
+    text-align: center;
+	width: 100%;
 }
 
 #description {
@@ -198,12 +197,12 @@ html.night {
 
 .landscape .forecastIconWrapper {
     font-size: 71.9px;
-    font-size: 14.2rem;
+    font-size: 20rem;
 }
 
 .landscape .colTemp {
     font-size: 35.9px;
-    font-size: 15rem;
+    font-size: 12rem;
 }
 
 .landscape .colTime {
@@ -213,9 +212,9 @@ html.night {
 
 .landscape .colDesc {
     font-size: 80px;
-    font-size: 5rem;
+    font-size: 8rem;
 }
 
 .landscape .col {
-    width: 19.5%;
+    width: 24%;
 }
