@@ -9,9 +9,15 @@
     <link rel="stylesheet" type="text/css" href="vendor/weathericons/css/weather-icons.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom-icons.css"/>
     <link rel="stylesheet" type="text/css" href="css/kindle.css"/>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Revalia">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
     <script type="text/javascript">
+		const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		
+		//const quote_api_url ="https://zenquotes.io/api/quotes/";
+
+		
+
         var jsonp = function () {
             return {
                 // JSONP Request
@@ -76,36 +82,32 @@
         function refreshForecastWeather() {
             jsonp.request("http://api.openweathermap.org/data/2.5/forecast?" + _apiParams + "&callback=jsonp.response" + "&_timestamp=" + (new Date()).getTime()
                 , function (data) {
-                    processForecastWeather(data);
+                    //processForecastWeather(data);
                 }, "forecast");
-        }
-
-        function refreshData() {
-		    var timeNow = momentWithCorrectUtcOffset(new Date());
-		    var minutes = timeNow.minutes();
-			lastUpdate.innerHTML = timeNow.format('hh:mm');
-			date.innerHTML = timeNow.format("dddd , MMM Do"); 
-			if(minutes == 0 || minutes == 30){
-				refreshActualWeather();
-				refreshForecastWeather();
-			}
-			
-			
-           window.setTimeout("refreshData()", refreshTime);
         }
 		
 
+
+        function refreshData() {
+            refreshActualWeather();
+            //refreshForecastWeather();
+			//refreshQuote();
+            setNightMode();
+
+            window.setTimeout("refreshData()", refreshTime);
+        }
+
         function processForecastWeather(data) {
-            for (var i = 1; i < forecastCount; i++) {
-                var forecast = data.list[i-1];
+            for (var i = 0; i < forecastCount; i++) {
+                var forecast = data.list[i];
 
                 forecastsCells[i].temp.innerHTML = Math.round(forecast.main.temp) + unitsSymbolHtml;
                 forecastsCells[i].icon.className = getIconClassName(forecast.weather[0], new Date(forecast.dt * 1000));
                 forecastsCells[i].desc.innerHTML = forecast.weather[0].description;
-                forecastsCells[i].time.innerHTML = momentWithCorrectUtcOffset(new Date(forecast.dt * 1000)).format(timeFormat);
+                forecastsCells[i].time.innerHTML = 'Bengaluru';
             }
         }
-
+		
         function getIconClassName(weather, date) {
             var isNight = weather.icon.slice(-1) === "n";
             if (isNight && weather.id == 800) {
@@ -193,12 +195,33 @@
         };
 
         function processActualWeather(data) {
-            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            var monthNames = ["January", "February", "March", "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
-            document.getElementById("temp1").innerHTML = Math.round(data.main.temp) + unitsSymbolHtml;
-            document.getElementById("icon1").className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
-            document.getElementById("desc1").innerHTML = data.weather[0].description;
+            icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
+			var currentDate = new Date();
+            temp.innerHTML = ''//Math.round(data.main.temp) + unitsSymbolHtml;//currentDate.getDate();
+            city.innerHTML = ''//Math.round(data.main.temp) + unitsSymbolHtml;//'Bengaluru'; //monthNames[currentDate.getMonth()];
+            description.innerHTML = Math.round(data.main.temp) + unitsSymbolHtml;//data.weather[0].description;//weekday[currentDate.getDay()];
+            lastUpdate.innerHTML = momentWithCorrectUtcOffset(new Date()).format(timeFormat);
+            //date.innerHTML = momentWithCorrectUtcOffset(new Date()).format("dd, ll");
+            
+            var sunrise = momentWithCorrectUtcOffset(new Date(data.sys.sunrise * 1000));
+            var sunset = momentWithCorrectUtcOffset(new Date(data.sys.sunset * 1000));
+			var moonrise = momentWithCorrectUtcOffset(new Date(data.sys.moo * 1000));
+            
+            _sunriseHour = sunrise.hour();
+            _sunsetHour = sunset.hour();
 
+            setNightMode();
+			
+			//update forecast
+			forecastsCells[0].temp.innerHTML = currentDate.getDate()+" / "+monthNames[currentDate.getMonth()];
+            //forecastsCells[0].icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
+            //forecastsCells[0].desc.innerHTML = data.weather[0].description;
+            forecastsCells[0].time.innerHTML = weekday[currentDate.getDay()];
+			forecastsCells[4].desc.innerHTML = "<i class='wi wi-sunrise'></i> "+ sunrise.format(timeFormat)+"<br><i class='wi wi-sunset'></i>"+sunset.format(timeFormat)+"<br><i class='wi " + getMoonIcon(getCurrentMoonPhase())+"' style='font-size:15rem;'>";
+			
+           // sun.innerHTML = "<i class='wi " + getMoonIcon(getCurrentMoonPhase()) + "'></i>&nbsp;&nbsp;<i class='wi wi-sunrise'></i> " + sunrise.format(timeFormat)
+           //         + "&nbsp;&nbsp;<i class='wi wi-sunset'></i> " + sunset.format(timeFormat);
+            //  alert(data.name);
         }
 
         /**
@@ -301,7 +324,7 @@
         var _apiParams = null;
 
         if (!refreshTime) {
-            refreshTime = 1 * 60 * 1000;
+            refreshTime = 30 * 60 * 1000;
         }
 
         function rotate() {
@@ -367,11 +390,11 @@
 
         window.addEventListener('load', function () {
             console.log("load");
-            moment.locale("sk");
+            moment.locale("en");
 
             _apiParams = getApiParams();
             if (_apiParams === null) {
-                window.location = "config.html";
+                //window.location = "config.html";
             }
 
             if (lang) {
@@ -385,11 +408,6 @@
             icon = document.getElementById("icon");
 
             city = document.getElementById("city");
-            city.addEventListener('click', function (event) {
-                event.preventDefault();
-                window.location.href = window.location.href.replace("/index.html", "/config.html");
-                return false
-            });
             description = document.getElementById("description");
             lastUpdate = document.getElementById("lastUpdate");
             date = document.getElementById("date");
@@ -521,7 +539,7 @@
 
 <body>
 <div id="page">
-    <a id="city" href="./config.html"></a>
+    <div id="city"></div>
     <div id="iconWrapper"><i id="icon"></i></div>
     <div class="tempWrapper">
         <div id="temp"></div>
@@ -529,13 +547,12 @@
     </div>
     <div id="description"></div>
     <div id="lastUpdate"></div>
-	<div id="date"></div>
     <div class="forecast">
-        <div class="col  col1">
+        <div class="col col1" style="width:39%">
             <div id="time1" class="colTime"></div>
-            <div class="forecastIconWrapper"><i id="icon1" class="colIcon"></i></div>
+            <!--<div class="forecastIconWrapper"><i id="icon1" class="colIcon"></i></div>-->
             <div id="temp1" class="colTemp"></div>
-            <div id="desc1" class="colDesc"></div>
+            <!--<div id="desc1" class="colDesc"></div>-->
         </div>
         <div class="col col2">
             <div id="time2" class="colTime"></div>
@@ -543,27 +560,27 @@
             <div id="temp2" class="colTemp"></div>
             <div id="desc2" class="colDesc"></div>
         </div>
-        <div class="col col3">
+        <!--<div class="col col3">
             <div id="time3" class="colTime"></div>
             <div class="forecastIconWrapper"><i id="icon3" class="colIcon"></i></div>
             <div id="temp3" class="colTemp"></div>
             <div id="desc3" class="colDesc"></div>
-        </div>
+        </div>-->
         <div class="col col4">
             <div id="time4" class="colTime"></div>
             <div class="forecastIconWrapper"><i id="icon4" class="colIcon"></i></div>
             <div id="temp4" class="colTemp"></div>
             <div id="desc4" class="colDesc"></div>
         </div>
-        <!--<div class="col col5">
-            <div id="time5" class="colTime"></div>
+        <div class="col col5">
+            <!--<div id="time5" class="colTime"></div>
             <div class="forecastIconWrapper"><i id="icon5" class="colIcon"></i></div>
-            <div id="temp5" class="colTemp"></div>
-            <div id="desc5" class="colDesc"></div>-->
+            <div id="temp5" class="colTemp"></div>-->
+            <div id="desc5" class="colDesc"></div>
         </div>
     </div>
-   
-    <!--<div id="sun"></div>-->
+    <!--<div id="date"></div>
+    <div id="sun"></div>-->
 </div>
 <div id="cleaner"></div>
 </body>
