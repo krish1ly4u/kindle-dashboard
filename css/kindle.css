@@ -92,7 +92,7 @@ html.night {
     left: 0;
     border-top: 5px solid black;
     border-bottom: 1px solid black;
-    height: 39%;
+    height: 43%;
 }
 
 .night .forecast {
@@ -212,7 +212,7 @@ html.night {
 
 .landscape .colDesc {
     font-size: 80px;
-    font-size: 8rem;
+    font-size: 7rem;
 }
 
 .landscape .col {
