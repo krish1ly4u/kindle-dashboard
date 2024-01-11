@@ -173,8 +173,8 @@ html.night {
 }
 
 .landscape #lastUpdate {
-    font-size: 800px;
-    font-size: 50rem;
+    font-size: 480px;
+    font-size: 30rem;
 }
 
 .landscape #description {
@@ -212,8 +212,8 @@ html.night {
 }
 
 .landscape .colDesc {
-    font-size: 14.2px;
-    font-size: 8rem;
+    font-size: 80px;
+    font-size: 5rem;
 }
 
 .landscape .col {
