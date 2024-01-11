@@ -59,20 +59,19 @@ html.night {
 }
 
 #lastUpdate {
-	font-family: 'Digital Dismay';
     font-size: 10px;
     font-size: 1.4rem;
     position: absolute;
-    bottom: 47%;
+    bottom: 45%;
     left: 3.3%;
 }
 
 #description {
     position: absolute;
-    right: 3.3%;
-    bottom: 46%;
+    right: 10%;
+    bottom: 40%;
     font-size: 50px;
-    font-size: 7rem;
+    font-size: 15rem;
     text-align: right;
 }
 
@@ -83,7 +82,7 @@ html.night {
 
 #iconWrapper {
     position: absolute;
-    left: 5%;
+    right: 5%;
     top: 8.5%;
 }
 
@@ -119,8 +118,11 @@ html.night {
 }
 
 #date {
+    position: absolute;
+    bottom: 0;
+    left: 3.3%;
     font-size: 30px;
-    font-size: 10rem;
+    font-size: 4.3rem;
 }
 
 #sun {
@@ -171,16 +173,13 @@ html.night {
 }
 
 .landscape #lastUpdate {
-    font-size: 7.1px;
-    font-size: 42rem;
-	position: static;
-    text-align: center;
-	min-height: 20rem;
+    font-size: 800px;
+    font-size: 50rem;
 }
 
 .landscape #description {
     font-size: 35.4px;
-    font-size: 7rem;
+    font-size: 15rem;
 }
 
 .landscape #icon {
@@ -188,10 +187,8 @@ html.night {
     font-size: 35rem;
 }
 .landscape #date {
-	font-family : 'Audiowide';
     font-size: 21.8px;
-    font-size: 10rem;
-	text-align: center;
+    font-size: 4.3rem;
 }
 
 .landscape #sun {
@@ -206,42 +203,19 @@ html.night {
 
 .landscape .colTemp {
     font-size: 35.9px;
-    font-size: 7.1rem;
+    font-size: 15rem;
 }
 
 .landscape .colTime {
     font-size: 25.3px;
-    font-size: 5rem;
+    font-size: 10rem;
 }
 
 .landscape .colDesc {
     font-size: 14.2px;
-    font-size: 2.8rem;
+    font-size: 8rem;
 }
 
 .landscape .col {
-    width: 20%;
-}
-.landscape .col1 {
-    width: 39%;
-}
-#icon1{
- float:left;
- font-size:15rem; 
- margin-left: 3.3%;
- margin-top: 3%;	
-}
-#desc1{
-    position: absolute;
-    bottom: 5%;
-    left: 3.3%;
-   font-size:4.5rem;
-}
-#temp1{
-  font-size:12rem;
-}
-
-@font-face {
-  font-family: 'Digital Dismay';
-  src: url('../font/Digital Dismay.otf');
+    width: 19.5%;
 }
